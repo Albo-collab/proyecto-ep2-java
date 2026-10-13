@@ -4,8 +4,7 @@ Microservicio REST desarrollado con **Java 17 y Spring Boot** para la Evaluació
 Permite gestionar productos con operaciones CRUD y persistencia en una base de datos relacional.
 
 ## Integrantes
-- NOMBRE APELLIDO 1
-- NOMBRE APELLIDO 2
+- IVO ARIAS
 
 ## Tecnologías
 - Java 17
