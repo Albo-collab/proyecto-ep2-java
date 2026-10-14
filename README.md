@@ -1,24 +1,24 @@
 # Proyecto EP2 - Microservicio de Productos y Categorías
 
-Microservicio REST desarrollado con **Java 17 y Spring Boot** para la Evaluación Parcial 2 de JVY0101 (Duoc UC).
+Microservicio REST desarrollado con **Java y Spring Boot** para la Evaluación Parcial 2 de JVY0101 (Duoc UC).
 Permite gestionar **productos** y **categorías** con operaciones CRUD y persistencia en MySQL.
-Relación: una categoría tiene muchos productos (`@OneToMany` / `@ManyToOne`).
+Relación entre entidades: una categoría tiene muchos productos (`@OneToMany` / `@ManyToOne`).
 
 ## Integrantes
-- IVO ARIAS
+- Ivo Arias
 
 ## Tecnologías
-- Java 17
+- Java 17 o superior
 - Spring Boot (Web MVC, Data JPA)
 - MySQL
-- Maven
+- Maven (con Maven Wrapper incluido)
 - Git / GitHub
 
 ## Requisitos
 - Java 17 o superior (`java -version`)
-- Maven 3.8+ (`mvn -version`)
 - MySQL en ejecución (puerto 3306)
 - Git
+- Maven es opcional: el proyecto incluye el wrapper `mvnw`
 
 ## Cómo ejecutar
 
@@ -28,22 +28,29 @@ Relación: una categoría tiene muchos productos (`@OneToMany` / `@ManyToOne`).
    cd proyecto-ep2-java
 ```
 
-2. Configurar la base de datos en `src/main/resources/application.properties`
-   (cambiar usuario y contraseña de MySQL por los propios).
-   La base `proyecto_ep2` se crea automáticamente al iniciar.
+2. Configurar la base de datos en `src/main/resources/application.properties`.
+   Cambiar la línea `spring.datasource.password=` por la contraseña de MySQL propia.
+   El usuario por defecto es `root`.
+   La base de datos `proyecto_ep2` se crea automáticamente al iniciar la aplicación.
 
 3. Compilar y empaquetar:
 ```bash
-   mvn clean package
+   .\mvnw.cmd clean package
 ```
 
-4. Ejecutar:
+4. Ejecutar el archivo generado:
 ```bash
    java -jar target/proyecto-ep2-0.0.1-SNAPSHOT.jar
 ```
-   También se puede ejecutar con `mvn spring-boot:run`.
+   Alternativa, ejecutar directamente sin empaquetar:
+```bash
+   .\mvnw.cmd spring-boot:run
+```
 
 5. La API queda disponible en `http://localhost:8081`.
+
+> En Windows se usa `.\mvnw.cmd`. En Linux o Mac se usa `./mvnw`.
+> Si Maven ya está instalado, se puede usar `mvn` en lugar del wrapper.
 
 ## Endpoints
 
@@ -78,7 +85,7 @@ Primero se crea la categoría (`POST /api/categorias`):
 Luego el producto, asociado a la categoría (`POST /api/productos`):
 ```json
 {
-  "nombre": "Jugo de naranja",
+  "nombre": "Jugo",
   "precio": 1500,
   "descripcion": "Jugo natural",
   "categoria": { "id": 1 }
