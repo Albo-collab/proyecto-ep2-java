@@ -52,7 +52,7 @@ public class ProductoService {
         productoRepository.delete(existente);
     }
 
-    // Si el producto trae una categoria, comprueba que exista en la base de datos
+    // Comprueba que la categoria exista en la base de datos
     private Categoria resolverCategoria(Categoria categoria) {
         if (categoria == null || categoria.getId() == null) {
             return null;

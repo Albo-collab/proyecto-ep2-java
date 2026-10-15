@@ -19,11 +19,14 @@ public class Producto {
     @Column(length = 255)
     private String descripcion;
 
-    // Constructor vacío (obligatorio)
+    // Muchos productos pertenecen a una categoria
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
     public Producto() {
     }
 
-    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -54,5 +57,13 @@ public class Producto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
